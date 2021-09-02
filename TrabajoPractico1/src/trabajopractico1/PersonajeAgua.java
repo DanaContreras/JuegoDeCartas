@@ -23,6 +23,11 @@ public class PersonajeAgua extends PersonajeBuilder{
     }
 
     @Override
+    public void buildTipo() {
+        this.personaje.setTipoPersonaje("Agua");
+    }
+
+    @Override
     public void buildDescripcion() {
         this.personaje.setDescripcion(
                 "Personaje de AGUA: \n- Posee Armas.\n- No posee poderes.\n- Nivel: " + this.personaje.getNivel() +

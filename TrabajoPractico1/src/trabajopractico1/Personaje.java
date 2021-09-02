@@ -7,9 +7,10 @@ public class Personaje {
     private boolean poseeArma = false;
     private boolean poseePoderes = false;
     private int nivel = 1;
+    private String tipoPersonaje = "";
     private String descripcion = "";
     
-    public boolean poseeArma() {
+    public boolean getPoseeArma() {
         return poseeArma;
     }
 
@@ -17,7 +18,7 @@ public class Personaje {
         this.poseeArma = poseeArma;
     }
 
-    public boolean poseePoderes() {
+    public boolean getPoseePoderes() {
         return poseePoderes;
     }
 
@@ -35,6 +36,14 @@ public class Personaje {
 
     public String getDescripcion() {
         return descripcion;
+    }
+
+    public String getTipoPersonaje() {
+        return tipoPersonaje;
+    }
+
+    public void setTipoPersonaje(String tipoPersonaje) {
+        this.tipoPersonaje = tipoPersonaje;
     }
 
     public void setDescripcion(String descripcion) {

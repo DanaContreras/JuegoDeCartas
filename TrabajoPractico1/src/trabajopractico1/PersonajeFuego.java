@@ -22,6 +22,11 @@ public class PersonajeFuego extends PersonajeBuilder{
     }
 
     @Override
+    public void buildTipo() {
+        this.personaje.setTipoPersonaje("Fuego");
+    }
+    
+    @Override
     public void buildDescripcion() {
         this.personaje.setDescripcion(
                 "Personaje de FUEGO: \n- No posee Armas.\n- Posee poderes.\n- Nivel: " + this.personaje.getNivel() +

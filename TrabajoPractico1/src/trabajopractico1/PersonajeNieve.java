@@ -23,6 +23,11 @@ public class PersonajeNieve extends PersonajeBuilder{
     } 
     
     @Override
+    public void buildTipo() {
+        this.personaje.setTipoPersonaje("Nieve");
+    }
+    
+    @Override
     public void buildDescripcion() {
         this.personaje.setDescripcion(
                 "Personaje de NIEVE: \n- Posee Armas.\n- Posee poderes.\n- Nivel: " + this.personaje.getNivel() +

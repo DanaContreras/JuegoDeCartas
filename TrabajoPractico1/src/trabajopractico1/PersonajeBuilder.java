@@ -13,6 +13,8 @@ public abstract class PersonajeBuilder {
     
     public abstract void buildNivel();
     
+    public abstract void buildTipo();
+    
     public abstract void buildDescripcion();
     
     public Personaje build(){
