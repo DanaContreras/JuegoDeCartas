@@ -1,5 +1,4 @@
 package trabajopractico1;
-import java.util.Random;
 
 public class CartaFuego implements CartaBuilder{
     
@@ -9,11 +8,7 @@ public class CartaFuego implements CartaBuilder{
     //Arreglos para elegir al azar entres las opciones de valores o colores posibles
     // para las cartas de Fuego
     private final int[] posiblesValores = new int[]{2, 4, 9};
-    private final String[] posiblesColores = new String[]{"Rojo", "Naranja", "Amarillo"};
-    
-    //Clase Random para generar los random
-    private final Random random = new Random();
-    
+    private final String[] posiblesColores = new String[]{"Rojo", "Naranja", "Amarillo"};   
     
     @Override
     public void buildValor(){

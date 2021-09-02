@@ -1,5 +1,4 @@
 package trabajopractico1;
-import java.util.Random;
 
 public class CartaAgua implements CartaBuilder {
     
@@ -10,11 +9,7 @@ public class CartaAgua implements CartaBuilder {
     // para las cartas de Agua
     private final int[] posiblesValores = new int[]{3, 5, 7};
     private final String[] posiblesColores = new String[]{"Celeste", "Azul"};
-    
-    //Clase Random para generar los random
-    private final Random random = new Random();
-    
-    
+   
     @Override
     public void buildValor(){
         //Le asigna un valor al azar entre los posibles para las cartas de Agua
