@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Documentos/NetBeansProjects/LaboratorioDeProgramacion/TrabajoPractico1/src/trabajopractico1/CartaNieve.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/LaboratorioDeProgramacion/TrabajoPractico1/src/trabajopractico1/PersonajeAgua.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/LaboratorioDeProgramacion/TrabajoPractico1/src/trabajopractico1/PersonajeFuego.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/LaboratorioDeProgramacion/TrabajoPractico1/src/trabajopractico1/TextoAColor.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/LaboratorioDeProgramacion/TrabajoPractico1/src/trabajopractico1/MainDePrueba.java</file>
             <file>file:/D:/Documentos/NetBeansProjects/LaboratorioDeProgramacion/TrabajoPractico1/src/trabajopractico1/Personaje.java</file>
-            <file>file:/D:/Documentos/NetBeansProjects/LaboratorioDeProgramacion/TrabajoPractico1/src/trabajopractico1/Carta.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/LaboratorioDeProgramacion/TrabajoPractico1/src/trabajopractico1/HiloCallable.java</file>
         </group>
     </open-files>
 </project-private>

@@ -55,6 +55,8 @@ public class MainDePrueba {
         
         //Lista de los HiloCallable que usará el invokeAll
         List<HiloCallable> lista = new ArrayList<>();
+              
+        System.out.println("Creando los hilos  \n-");
         
         //Crea una por cada carta, dandole color NEGRO al jugador 1 y color
         // BLANCO al 2
@@ -69,6 +71,8 @@ public class MainDePrueba {
         
         //Lista de future's que recuperará los resultados de los callable
         List<Future<Carta>> cartasResultado = null;
+              
+        System.out.println("\n Creando las cartas! (" + cartasPorJugador + " por jugador)  \n");
         
         //InvokeAll que pone en marcha todos los hilos y los asigna a la lista 
         // de future's
@@ -81,9 +85,7 @@ public class MainDePrueba {
         //Cierro el executor
         executor.shutdown();
         
-        System.out.println("Creando las cartas!");
-        
-        System.out.println("Esperando recuperar cartas...");
+        System.out.println("\n Esperando recuperar cartas...  \n");
         
         //for para recuperar todas las cartas del jugador 1 y pasarlas a manoJugadorUno
         for(int i = 0; i < cartasPorJugador; i++){
@@ -92,31 +94,31 @@ public class MainDePrueba {
                 manoJugadorUno[i] = cartasResultado.get(i).get();
                 
                 //Si es la primera carta recuperada:
-                if(i == 0)System.out.println("Cartas jugador 1:");
+                if(i == 0)System.out.println("\n Cartas jugador 1:  \n");
                 
-                System.out.println("Carta num " + i + ": \n-" + manoJugadorUno[i].getDescripcion());
+                System.out.println("Carta num " + (i + 1) + ": \n-" + manoJugadorUno[i].getDescripcion());
             } catch (InterruptedException | ExecutionException e) {
                 System.out.println("Error recuperando cartas jugador 1.");
             }
         }
         
         //for para recuperar todas las cartas del jugador 2 y pasarlas a manoJugadorDos
-        System.out.print("Cartas jugador 2:");
         for(int i = cartasPorJugador; i < cartasPorJugador * 2; i++){
             try{
                 //Consigue el future de la lista y luego la carta del future.
-                manoJugadorDos[i] = cartasResultado.get(i).get();
+                manoJugadorDos[i - cartasPorJugador] = cartasResultado.get(i).get();
                 
                 //Si es la primera carta del jugador 2 recuperada:
-                if(i == cartasPorJugador)System.out.println("Cartas jugador 2:");
+                if(i == cartasPorJugador)System.out.println("\n Cartas jugador 2: \n");
                 
-                System.out.println("Carta num " + i + ": \n-" + manoJugadorDos[i].getDescripcion());
+                System.out.println("Carta num " + (i + 1 - cartasPorJugador )+ ": \n" 
+                        + manoJugadorDos[i - cartasPorJugador].getDescripcion());
             } catch (InterruptedException | ExecutionException e) {
                 System.out.println("Error recuperando cartas jugador 1.");
             }
         }
         
-        System.out.println("Cartas recuperadas con exito!");
+        System.out.println("\n Cartas recuperadas con exito!!");
         
         //Aquí empezaría el juego
     } 
