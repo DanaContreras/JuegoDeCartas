@@ -1,5 +1,4 @@
 package trabajopractico1;
-import java.util.Random;
 
 public class CartaNieve implements CartaBuilder {
     
@@ -8,11 +7,7 @@ public class CartaNieve implements CartaBuilder {
     
     //Arreglos para elegir al azar entres las opciones de valores posibles para las 
     // cartas de Nieve, no necesita para los colores ya que siempre son transparentes
-    private final int[] posiblesValores = new int[]{1, 6, 8};
-    
-    //Clase Random para generar los random
-    private final Random random = new Random();
-    
+    private final int[] posiblesValores = new int[]{1, 6, 8};   
     
     @Override
     public void buildValor(){
@@ -26,6 +21,7 @@ public class CartaNieve implements CartaBuilder {
         this.resultado.setColor("Transparente");
     }
     
+    /*
     @Override
     public void buildPersonaje(){
         
@@ -52,6 +48,7 @@ public class CartaNieve implements CartaBuilder {
         //Asigna el resultado del creador de personajes a la carta
         this.resultado.setPersonaje(creadorPersonaje.build());
     }
+    */
     
     @Override
     public void buildDescripcion(){
