@@ -75,7 +75,7 @@ public class HiloCallable implements Callable<Carta>{
     //Metodos hechos aparte para aislar la construccion de la carta
     
     //Metodo para construir una carta de fuego
-    public void construirCartaFuego(Personaje personaje){
+    private void construirCartaFuego(Personaje personaje){
         
         //Arreglos para elegir al azar entres las opciones de valores o colores posibles
         // para las cartas de Fuego
@@ -103,7 +103,7 @@ public class HiloCallable implements Callable<Carta>{
     
     
     //Metodo para construir una carta de nieve
-    public void construirCartaNieve(Personaje personaje){
+    private void construirCartaNieve(Personaje personaje){
         
         //Arreglos para elegir al azar entres las opciones de valores posibles para
         // las cartas de Nieve, no necesita para los colores ya que siempre son transparentes
@@ -130,7 +130,7 @@ public class HiloCallable implements Callable<Carta>{
     
     
     //Metodo para construir una carta de Agua
-    public void construirCartaAgua(Personaje personaje){
+    private void construirCartaAgua(Personaje personaje){
         
         //Arreglos para elegir al azar entres las opciones de valores o colores posibles
         // para las cartas de Agua
