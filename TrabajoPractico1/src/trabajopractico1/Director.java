@@ -9,7 +9,6 @@ public class Director {
         */
         
         builder.reset(); // Se crea el personaje.
-        builder.buildTipo();
         builder.buildNivel(1);
         builder.buildColor(1);
         builder.buildPersonalidad();
@@ -24,7 +23,6 @@ public class Director {
         */
         
         builder.reset();
-        builder.buildTipo();
         builder.buildNivel(2);
         builder.buildColor(2);
         builder.buildHabilidadSecundaria(2);
@@ -39,7 +37,8 @@ public class Director {
         /* Se encarga de construir un personaje de nivel 3 paso a paso solo invocando los metodos necesarios para el mismo.
            Se necesita establecer las caracteristicas tipo, nivel, color, arma, habilidad secundaria, edad, tamanio, personalidad y aspecto.
         */
-        builder.buildTipo();
+        
+        builder.reset();
         builder.buildNivel(3);
         builder.buildColor(2);
         builder.buildArma();

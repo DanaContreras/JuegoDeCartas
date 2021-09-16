@@ -10,7 +10,8 @@ public class PersonajeNieve extends PersonajeBuilder{
     */
     
     @Override
-    public void buildTipo() {
+    public void reset() {
+        this.personaje = new Personaje();
         this.personaje.setTipo("Nieve");
     }
     

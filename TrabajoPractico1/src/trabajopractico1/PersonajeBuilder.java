@@ -5,13 +5,9 @@ public abstract class PersonajeBuilder {
     
     // Constructor declara los pasos de construccion del personaje.
     
-    protected Personaje personaje = new Personaje();
+    protected Personaje personaje;
     
-    public void reset(){
-        personaje = new Personaje();
-    }
-    
-    public abstract void buildTipo();
+    public abstract void reset();
     
     public abstract void buildNivel(int nivel);
     

@@ -9,7 +9,9 @@ public class PersonajeAgua extends PersonajeBuilder{
     */
 
     @Override
-    public void buildTipo() {
+    public void reset() {
+        // Crea instancia y define el tipo del personaje.
+        this.personaje = new Personaje();
         this.personaje.setTipo("Agua");
     }
 

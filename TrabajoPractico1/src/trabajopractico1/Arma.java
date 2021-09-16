@@ -6,7 +6,7 @@ public class Arma {
     // Clase correspondiente al arma que utiliza un personaje.
     
     private String nombre = "";
-    private char categoria = ' ';
+    private char categoria = ' '; // Admite valores de categoria A, B, C, ..., relacionadas con el tipo de daño que causan.
     private int danio = 0;
 
     // Constructor y metodos get/set.

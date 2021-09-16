@@ -43,6 +43,15 @@ public class ControladorJuego {
         mapaElementos.put("AguaAgua", 'E');
     }
     
+    //Metodo para retornar los resultados de cada jugador.
+    public int getPuntajeJugadorUno(){
+        return this.puntajeJugadorUno;
+    }
+    
+    public int getPuntajeJugadorDos(){
+        return this.puntajeJugadorDos;
+    }
+    
     //Metodo para crearCartas, el parametro determina la cantidad de cartas por jugador
     public void crearCartas(int cantCartasPorJugador){
 
@@ -117,7 +126,7 @@ public class ControladorJuego {
                 System.out.println("Carta num " + (i + 1 - cartasPorJugador )+ ": \n" 
                         + manoJugadorDos.get(i - cartasPorJugador).getDescripcion());
             } catch (InterruptedException | ExecutionException e) {
-                System.out.println("Error recuperando cartas jugador 1.");
+                System.out.println("Error recuperando cartas jugador 2.");
             }
         }
         
@@ -127,8 +136,9 @@ public class ControladorJuego {
 
     //Metodo para realizar el combate entre 2 cartas, recibe la posicion de la carta en la lista
     public void combateCartas(int numCartaJugadorUno, int numCartaJugadorDos){
-        Carta cartaJugadorUno = manoJugadorUno.remove(numCartaJugadorUno - 1);
-        Carta cartaJugadorDos = manoJugadorDos.remove(numCartaJugadorDos - 1);
+        
+        Carta cartaJugadorUno = manoJugadorUno.remove(numCartaJugadorUno % manoJugadorUno.size());
+        Carta cartaJugadorDos = manoJugadorDos.remove(numCartaJugadorDos % manoJugadorDos.size());
         
         switch(elementoGanador(cartaJugadorUno.getTipo(), cartaJugadorDos.getTipo())){
             case 'G':
@@ -155,35 +165,35 @@ public class ControladorJuego {
         puntajeJugadorDos += cartaJugadorDos.getValor();
         
         System.out.println("Jugador 1 gana " + cartaJugadorUno.getValor() + "puntos y Jugador 2 gana "
-            + cartaJugadorDos.getValor() + " puntos por valores de cartas.")
+            + cartaJugadorDos.getValor() + " puntos por valores de cartas.");
 
         //Da los puntos según elemento personaje y carta al jugador 1
-        switch(elementoGanador(cartaJugadorUno.getPersonaje.getTipo(), CartaJugadorUno.getTipo())){
+        switch(elementoGanador(cartaJugadorUno.getPersonaje().getTipo(), cartaJugadorUno.getTipo())){
             case 'G':
-                puntosJugadorUno += puntosPorPersonaje;
+                puntajeJugadorUno += puntosPorPersonaje;
                 System.out.println("Jugador 1 gana " + puntosPorPersonaje + " puntos por su personaje.");
                 break;
             case 'E':
                 System.out.println("Jugador 1 no gana puntos por su personaje.");
                 break;
-            case 'G':
-                puntosJugadorUno -= puntosPorPersonaje;
+            case 'P':
+                puntajeJugadorUno -= puntosPorPersonaje;
                 System.out.println("Jugador 1 pierde " + puntosPorPersonaje + " puntos por su personaje.");
                 break;
             default:
         }
 
         //Da los puntos según elemento personaje y carta al jugador 2
-        switch(elementoGanador(cartaJugadorDos.getPersonaje.getTipo(), CartaJugadorDos.getTipo())){
+        switch(elementoGanador(cartaJugadorDos.getPersonaje().getTipo(), cartaJugadorDos.getTipo())){
             case 'G':
-                puntosJugadorDos += puntosPorPersonaje;
+                puntajeJugadorDos += puntosPorPersonaje;
                 System.out.println("Jugador 2 gana " + puntosPorPersonaje + " puntos por su personaje.");
                 break;
             case 'E':
                 System.out.println("Jugador 2 no gana puntos por su personaje.");
                 break;
-            case 'G':
-                puntosJugadorDos -= puntosPorPersonaje;
+            case 'P':
+                puntajeJugadorDos -= puntosPorPersonaje;
                 System.out.println("Jugador 2 pierde " + puntosPorPersonaje + " puntos por su personaje.");
                 break;
             default:
@@ -214,4 +224,5 @@ public class ControladorJuego {
                 
         return resultadoElemento;
     }
+    
 }

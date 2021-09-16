@@ -8,7 +8,8 @@ public class PersonajeFuego extends PersonajeBuilder{
     */
     
     @Override
-    public void buildTipo() {
+    public void reset() {
+        this.personaje = new Personaje();
         this.personaje.setTipo("Fuego");
     }
     

@@ -10,7 +10,7 @@ public class Personaje {
     private Arma arma = null;
     private String habilidadSecundaria = "No tiene";
     private int edad = 1;
-    private char tamanio = 'S';
+    private char tamanio = 'S'; //Admite valores S: small, M: medium, B: big.
     private String personalidad = "Basico";
     private String aspecto = "Basico";
     
