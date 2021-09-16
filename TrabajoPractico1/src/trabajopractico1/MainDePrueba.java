@@ -1,22 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabajopractico1;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-/**
- *
- * @author Dana Contreras
- */
+import java.util.Random;
+
 public class MainDePrueba {
     
     public static void main(String[] args) {
+        
+        Random random = new Random();
         
         Personaje personajeBasico = new Personaje();
         System.out.println(personajeBasico.toString());
@@ -38,88 +27,45 @@ public class MainDePrueba {
         System.out.println(director.construirPersonajeNivel3(agua).toString());
         System.out.println(director.construirPersonajeNivel3(nieve).toString());
         
-        //Testeo de creacion de cartas
+        ControladorJuego controladorJuego = new ControladorJuego();
+        //Creación de cartas
         
-        //Executor para usar InvokeAll
-        ExecutorService executor = (ExecutorService) Executors.newFixedThreadPool(4);
-        
-        //Variable para ajustar la cantidad de cartas por jugador facilmente
+        System.out.print("Inserte la cantidad de cartas por jugador: ");
+        //Aca haría cartasPorJugador = read();
         int cartasPorJugador = 3;
         
-        //Arreglos que guardarán las cartas de cada jugador
-        Carta[] manoJugadorUno = new Carta[cartasPorJugador];
-        Carta[] manoJugadorDos = new Carta[cartasPorJugador];
-        
-        //utilizado mas adelante
-        HiloCallable hilo;
-        
-        //Lista de los HiloCallable que usará el invokeAll
-        List<HiloCallable> lista = new ArrayList<>();
-              
-        System.out.println("Creando los hilos  \n-");
-        
-        //Crea una por cada carta, dandole color NEGRO al jugador 1 y color
-        // BLANCO al 2
-        for(int i = 0; i < cartasPorJugador*2; i++){
-            if(i < cartasPorJugador){
-                hilo = new HiloCallable(i, "NEGRO");
-            } else {
-                hilo = new HiloCallable(i, "BLANCO");
-            }
-            lista.add(hilo);
-        }
-        
-        //Lista de future's que recuperará los resultados de los callable
-        List<Future<Carta>> cartasResultado = null;
-              
-        System.out.println("\n Creando las cartas! (" + cartasPorJugador + " por jugador)  \n");
-        
-        //InvokeAll que pone en marcha todos los hilos y los asigna a la lista 
-        // de future's
-        try{
-            cartasResultado = executor.invokeAll(lista);
-        } catch (InterruptedException e){
-            System.out.println("Error invokeAll");
-        }
-        
-        //Cierro el executor
-        executor.shutdown();
-        
-        System.out.println("\n Esperando recuperar cartas...  \n");
-        
-        //for para recuperar todas las cartas del jugador 1 y pasarlas a manoJugadorUno
-        for(int i = 0; i < cartasPorJugador; i++){
-            try{
-                //Consigue el future de la lista y luego la carta del future.
-                manoJugadorUno[i] = cartasResultado.get(i).get();
-                
-                //Si es la primera carta recuperada:
-                if(i == 0)System.out.println("\n Cartas jugador 1:  \n");
-                
-                System.out.println("Carta num " + (i + 1) + ": \n-" + manoJugadorUno[i].getDescripcion());
-            } catch (InterruptedException | ExecutionException e) {
-                System.out.println("Error recuperando cartas jugador 1.");
-            }
-        }
-        
-        //for para recuperar todas las cartas del jugador 2 y pasarlas a manoJugadorDos
-        for(int i = cartasPorJugador; i < cartasPorJugador * 2; i++){
-            try{
-                //Consigue el future de la lista y luego la carta del future.
-                manoJugadorDos[i - cartasPorJugador] = cartasResultado.get(i).get();
-                
-                //Si es la primera carta del jugador 2 recuperada:
-                if(i == cartasPorJugador)System.out.println("\n Cartas jugador 2: \n");
-                
-                System.out.println("Carta num " + (i + 1 - cartasPorJugador )+ ": \n" 
-                        + manoJugadorDos[i - cartasPorJugador].getDescripcion());
-            } catch (InterruptedException | ExecutionException e) {
-                System.out.println("Error recuperando cartas jugador 1.");
-            }
-        }
-        
-        System.out.println("\n Cartas recuperadas con exito!!");
+        controladorJuego.crearCartas(cartasPorJugador);
         
         //Aquí empezaría el juego
+        
+        System.out.println("Empieza el juego");
+        
+        //variables que guarden que carta eligió cada jugador 
+        //  (Van de 1 en adelante, restar 1 para la posición real en la lista)
+        int cartaElegidaUno, cartaElegidaDos;
+        
+        for(int numTurno = 0; numTurno < cartasPorJugador; numTurno++){
+
+            //Muestra las opciones al jugador 1
+            System.out.println("Es turno del jugador 1, elija una carta. Cartas disponibles: \n");
+            controladorJuego.mostrarCartasJugadorUno();
+
+            //El jugador 1 elige
+            //cartaElegidaUno = read(); AQUI ELEGIRIA EL JUGADOR 1
+            cartaElegidaUno = random.nextInt(cartasPorJugador - numTurno) + 1;
+            System.out.println("Jugador 1 ha elegido la carta numero " + cartaElegidaUno);
+ 
+            //Muestra las opciones al jugador 2           
+            System.out.println("Es turno del jugador 1, elija una carta. Cartas disponibles: \n");
+            controladorJuego.mostrarCartasJugadorDos();
+
+            //El jugador 2 elige
+            //cartaElegidaDos = read(); AQUI ELEGIRIA EL JUGADOR 2
+            cartaElegidaDos = random.nextInt(cartasPorJugador - numTurno) + 1;            
+            System.out.println("Jugador 2 ha elegido la carta numero " + cartaElegidaDos + "\n A COMBATIR!!");
+        
+            //Una vez elegidas las cartas, realiza el combate entre ellas
+            controladorJuego.combateCartas(cartaElegidaUno, cartaElegidaDos);
+        }
     } 
 }
