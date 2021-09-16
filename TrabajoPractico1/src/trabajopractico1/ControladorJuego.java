@@ -164,7 +164,7 @@ public class ControladorJuego {
         puntajeJugadorUno += cartaJugadorUno.getValor();
         puntajeJugadorDos += cartaJugadorDos.getValor();
         
-        System.out.println("Jugador 1 gana " + cartaJugadorUno.getValor() + "puntos y Jugador 2 gana "
+        System.out.println("Jugador 1 gana " + cartaJugadorUno.getValor() + " puntos y Jugador 2 gana "
             + cartaJugadorDos.getValor() + " puntos por valores de cartas.");
 
         //Da los puntos según elemento personaje y carta al jugador 1

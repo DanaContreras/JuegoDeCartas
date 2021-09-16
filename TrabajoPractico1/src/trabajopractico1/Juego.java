@@ -1,12 +1,10 @@
 package trabajopractico1;
-import java.util.Random;
 
 public class Juego {
     
     private Controlador controladorMVC; // Controlador que hace la conexion con la interfaz.
     private ControladorJuego controladorJuego = new ControladorJuego(); // Creacion de cartas.
     private int cartasPorJugador; 
-    private boolean flagEligioCarta = false; // Bandera para saber si el jugador eligio por primera vez.
     
     public void setControladorMVC(Controlador c){
         // Se establece la conexion con interfaz.
@@ -30,30 +28,28 @@ public class Juego {
         //Muestra las opciones al jugador 1
         System.out.println("Es turno del jugador , elija una carta. Cartas disponibles: \n");
         controladorJuego.mostrarCartasJugadorUno();
-        flagEligioCarta = true;
         
     }
     
-    public void compararEleccion(int cartaElegida){
-       //Se realiza el combate y suma de puntos con las cartas elegidas por el jugador y la maquina.
-        
-        if (flagEligioCarta) 
-            controladorJuego.mostrarCartasJugadorUno();
-        
-            // Se notifica que se ha elegido una carta.
-            System.out.println("Jugador 1 ha elegido la carta numero " + (cartaElegida+1));
+    public void compararEleccion(int cartaElegida) {
+        // Se realiza el combate y suma de puntos con las cartas elegidas por el jugador y la maquina.
 
-            System.out.println("Es turno del jugador 2. Cartas disponibles: \n");
-            controladorJuego.mostrarCartasJugadorDos();
+        // Se notifica que se ha elegido una carta.
+        System.out.println("Jugador 1 ha elegido la carta numero " + (cartaElegida + 1));
 
-            // Elige la maquina. Por simpleza, elige el mismo numero de carta que el jugador.
-            System.out.println("Jugador 2 ha elegido la carta numero " + (cartaElegida+1) + "\n A COMBATIR!!");
+        System.out.println("Es turno del jugador 2. Cartas disponibles: \n");
+        controladorJuego.mostrarCartasJugadorDos();
 
-            //Una vez elegidas las cartas, realiza el combate entre ellas
-            controladorJuego.combateCartas(cartaElegida, cartaElegida);
-            controladorMVC.mostrarPuntos(controladorJuego.getPuntajeJugadorUno(), controladorJuego.getPuntajeJugadorDos());
-            
-            System.out.println("--------------------------------------------------------------");
+        // Elige la maquina. Por simpleza, elige el mismo numero de carta que el jugador.
+        System.out.println("Jugador 2 ha elegido la carta numero " + (cartaElegida + 1) + "\n A COMBATIR!!");
+
+        //Una vez elegidas las cartas, realiza el combate entre ellas
+        controladorJuego.combateCartas(cartaElegida, cartaElegida);
+        controladorMVC.mostrarPuntos(controladorJuego.getPuntajeJugadorUno(), controladorJuego.getPuntajeJugadorDos());
+
+        System.out.println("--------------------------------------------------------------");
+        System.out.println("");
+        controladorJuego.mostrarCartasJugadorUno();
     }
         
     /*

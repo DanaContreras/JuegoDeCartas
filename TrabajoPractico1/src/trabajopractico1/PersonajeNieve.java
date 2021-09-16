@@ -1,6 +1,5 @@
 
 package trabajopractico1;
-import java.util.Random;
 
 public class PersonajeNieve extends PersonajeBuilder{
     
