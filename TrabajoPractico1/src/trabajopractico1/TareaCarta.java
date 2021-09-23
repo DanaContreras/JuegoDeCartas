@@ -2,7 +2,9 @@ package trabajopractico1;
 import java.util.concurrent.Callable;
 import java.util.Random;
 
-public class HiloCallable implements Callable<Carta>{
+//Clase que implementa callable para representar la tarea de crear una carta.
+
+public class TareaCarta implements Callable<Carta>{
     
     //Carta result que guarda el resultado que se pasará al Future
     private final Carta result = new Carta();
@@ -13,7 +15,7 @@ public class HiloCallable implements Callable<Carta>{
     private final String color;
     TextoAColor textoConColor = new TextoAColor();
     
-    public HiloCallable(int numero, String color){
+    public TareaCarta(int numero, String color){
         this.nombre = "Hilo callable " + numero;
         this.color = color;
         System.out.println(textoConColor.cambiarColor(color, nombre + ": Hilo creado"));
@@ -94,10 +96,10 @@ public class HiloCallable implements Callable<Carta>{
         //Descripcion, la parte de la carta tiene color segun su tipo y la de 
         // personaje mantiene su color original
         this.result.setDescripcion(
-            textoConColor.cambiarColor("Rojo", "Carta de Fuego: " +
+            textoConColor.cambiarColor("Rojo", "   Carta de Fuego: " +
                 "\n- Su valor es: " + this.result.getValor() + 
                 "\n- Es de Color " + this.result.getColor() + 
-                "\n- ")
+                "\n   ")
             + personaje.toString());
     }
     
@@ -121,10 +123,10 @@ public class HiloCallable implements Callable<Carta>{
         //Descripcion, la parte de la carta tiene color segun su tipo y la de 
         // personaje mantiene su color original
         this.result.setDescripcion(
-            textoConColor.cambiarColor("Blanco", "Carta de Nieve: " +
+            textoConColor.cambiarColor("Blanco", "   Carta de Nieve: " +
                 "\n- Su valor es: " + this.result.getValor() + 
                 "\n- Es Transparente " +
-                "\n- ")
+                "\n   ")
             + personaje.toString());
     }
     
@@ -149,10 +151,10 @@ public class HiloCallable implements Callable<Carta>{
         //Descripcion, la parte de la carta tiene color segun su tipo y la de 
         // personaje mantiene su color original
         this.result.setDescripcion(
-            textoConColor.cambiarColor("Azul", "Carta de AGUA: " +
+            textoConColor.cambiarColor("Azul", "   Carta de AGUA: " +
                 "\n- Su valor es: " + this.result.getValor() + 
                 "\n- Es de Color " + this.result.getColor() + 
-                "\n- ")
+                "\n   ")
              + personaje.toString());
     }
 }

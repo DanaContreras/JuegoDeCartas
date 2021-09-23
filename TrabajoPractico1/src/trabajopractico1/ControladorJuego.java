@@ -54,30 +54,26 @@ public class ControladorJuego {
     
     //Metodo para crearCartas, el parametro determina la cantidad de cartas por jugador
     public void crearCartas(int cantCartasPorJugador){
-
-        //Executor para usar InvokeAll
-        ExecutorService executor = (ExecutorService) Executors.newFixedThreadPool(4);
         
         //Variable para ajustar la cantidad de cartas por jugador facilmente
         cartasPorJugador = cantCartasPorJugador;
-       
-        //utilizado mas adelante
-        HiloCallable hilo;
         
+        //Executor para usar InvokeAll
+        ExecutorService executor = (ExecutorService) Executors.newFixedThreadPool(cartasPorJugador);
+      
         //Lista de los HiloCallable que usará el invokeAll
-        List<HiloCallable> lista = new ArrayList<>();
+        List<TareaCarta> lista = new ArrayList<>();
               
         System.out.println("Creando los hilos  \n-");
         
-        //Crea una por cada carta, dandole color NEGRO al jugador 1 y color
-        // BLANCO al 2
+        //Crea una por cada carta, dandole color Violeta al jugador 1 y color
+        // Blanco al 2
         for(int i = 0; i < cartasPorJugador*2; i++){
             if(i < cartasPorJugador){
-                hilo = new HiloCallable(i, "NEGRO");
+                lista.add(new TareaCarta(i, "Violeta"));
             } else {
-                hilo = new HiloCallable(i, "BLANCO");
+                lista.add(new TareaCarta(i, "Blanco"));
             }
-            lista.add(hilo);
         }
         
         //Lista de future's que recuperará los resultados de los callable
